@@ -376,7 +376,8 @@ class pivy_build(build):
             if sys.platform == "win32":
                 INCLUDE_DIR = os.getenv("SIMVOLEONDIR") + "\\include"
             else:
-                INCLUDE_DIR = self.do_os_popen("simvoleon-config --includedir")
+                prefix = self.do_os_popen("simvoleon-config --prefix")
+                INCLUDE_DIR = prefix + '/include'
 
             sys.stdout.write(blue("Preparing") + green(" VolumeViz ") + blue("headers:"))
             dir_gen = os.walk("VolumeViz", INCLUDE_DIR)
@@ -433,7 +434,7 @@ class pivy_build(build):
                         LDFLAGS_LIBS += os.path.join(os.getenv("COINDIR"), "lib", "SoQt.lib") + " "
             else:
                 INCLUDE_DIR = self.do_os_popen("coin-config --includedir")
-                if module_name != 'coin':
+                if (module_name != 'coin') and (module_name != '_simvoleon'):
                     mod_include_dir = self.do_os_popen("%s --includedir" % config_cmd)
                     if mod_include_dir != INCLUDE_DIR:
                         INCLUDE_DIR += '\" -I\"%s' % mod_include_dir
