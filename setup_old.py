@@ -156,6 +156,7 @@ class pivy_build(build):
     if sys.version_info.major < 3:
         MODULES['coin'][3] = 'coin2'
         MODULES['soqt'][3] = 'soqt2'
+        MODULES['simvoleon'][3] = 'simvoleon2'
 
     SUPPORTED_SWIG_VERSIONS = ['1.3.31', '1.3.33', '1.3.35', '1.3.40']
     SWIG_VERSION = ""
