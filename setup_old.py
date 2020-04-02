@@ -447,7 +447,7 @@ class pivy_build(build):
                 print(blue(self.SWIG + " " + self.SWIG_SUPPRESS_WARNINGS + " " + self.SWIG_PARAMS %
                            (INCLUDE_DIR,
                             self.CXX_INCS,
-                            mod_out_prefix, module)))
+                            mod_out_prefix, mod_hack_name)))
                 if os.system(self.SWIG + " " + self.SWIG_SUPPRESS_WARNINGS + " " + self.SWIG_PARAMS %
                              (INCLUDE_DIR,
                               self.CXX_INCS,
